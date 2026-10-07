@@ -1,0 +1,170 @@
+
+@import "tailwindcss";
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  font-family: Poppins, sans-serif;
+}
+.logo{
+    font-family: "Luckiest Guy", cursive;
+    font-size: 30px;
+}
+.donut-page {
+  display: none;
+  min-height: 100vh;
+  animation: pageIn 0.7s ease;
+}
+
+.donut-page:first-child {
+  display: block;
+}
+
+.donut-page:target {
+  display: block;
+}
+
+.donut-page:has(~ .donut-page:target) {
+  display: none;
+}
+
+.content {
+  animation: contentIn 0.8s ease;
+}
+
+.donut-image-area {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-donut {
+  width: 370px;
+  max-width: 80%;
+  position: relative;
+  z-index: 2;
+  animation: floatDonut 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 25px 25px #0003);
+}
+
+.pink-glow,
+.chocolate-glow,
+.blue-glow {
+  position: absolute;
+  width: 390px;
+  height: 390px;
+  border-radius: 50%;
+  filter: blur(65px);
+  opacity: 0.65;
+}
+.head{
+    font-family: "Luckiest Guy", cursive;
+}
+.pink-glow {
+  background: #ff5d99;
+}
+
+.chocolate-glow {
+  background: #995e42;
+}
+
+.blue-glow {
+  background: #00b9ff;
+}
+
+.donut-thumb {
+  width: 78px;
+  height: 78px;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  transition: 0.4s ease;
+}
+
+.donut-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.4s ease;
+}
+
+.donut-thumb:hover {
+  transform: translateY(-10px) scale(1.1);
+}
+
+.donut-thumb:hover img {
+  transform: rotate(6deg) scale(1.08);
+}
+
+@keyframes floatDonut {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes contentIn {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .donut-image-area {
+    height: 350px;
+  }
+
+  .main-donut {
+    width: 280px;
+  }
+
+  .pink-glow,
+  .chocolate-glow,
+  .blue-glow {
+    width: 280px;
+    height: 280px;
+  }
+
+  .donut-thumb {
+    width: 62px;
+    height: 62px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-donut {
+    width: 240px;
+  }
+
+  .donut-image-area {
+    height: 300px;
+  }
+}
